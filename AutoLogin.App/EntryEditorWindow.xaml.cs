@@ -33,24 +33,14 @@ public partial class EntryEditorWindow : Window
         ProfileComboBox.SelectedValue = entry.AutomationProfileId;
         AutoSubmitCheckBox.IsChecked = entry.AutoSubmit;
 
-        if (credentialProtector is not null && !string.IsNullOrWhiteSpace(entry.EncryptedTotpSecret))
-        {
-            try
-            {
-                TotpSecretTextBox.Text = credentialProtector.Unprotect(entry.EncryptedTotpSecret);
-            }
-            catch
-            {
-                TotpSecretTextBox.Text = string.Empty;
-            }
-        }
+        _ = credentialProtector;
     }
 
     public LoginEntry? EditedEntry { get; private set; }
 
     public string Password => PasswordBox.Password;
 
-    public string TotpSecret => TotpSecretTextBox.Text.Trim();
+    public string TotpSecret => TotpSecretBox.Password.Trim();
 
     private void TitleBar_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
     {

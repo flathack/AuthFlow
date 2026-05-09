@@ -22,6 +22,11 @@ public sealed class LoginEntry
 
     public DateTimeOffset UpdatedAt { get; set; }
 
+    public override string ToString()
+    {
+        return string.IsNullOrWhiteSpace(DisplayName) ? StartUrl : DisplayName;
+    }
+
     public LoginEntry Clone()
     {
         return new LoginEntry

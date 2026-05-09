@@ -3,13 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
         mc:Ignorable="d"
         Title="AuthFlow"
-        Height="360"
-        Width="640"
-        MinHeight="340"
-        MinWidth="560"
-        ResizeMode="NoResize"
+        Height="760"
+        Width="1180"
+        MinHeight="560"
+        MinWidth="900"
+        ResizeMode="CanResize"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         Loaded="Window_Loaded">
@@ -19,104 +20,125 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="44" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
             <Border Background="{StaticResource ThemeWindowBrush}"
                     BorderBrush="{StaticResource ThemeBorderBrush}"
                     BorderThickness="0,0,0,1"
                     MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
-                <DockPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
                     <TextBlock Margin="12,0,0,0"
                                VerticalAlignment="Center"
                                FontSize="14"
                                Foreground="{StaticResource ThemeWindowTextBrush}"
                                Text="{Binding Title, RelativeSource={RelativeSource AncestorType=Window}}" />
-                    <Button DockPanel.Dock="Right"
-                            Content="X"
-                            Style="{StaticResource CloseTitleBarButtonStyle}"
-                            Click="CloseButton_Click" />
-                </DockPanel>
+                    <StackPanel Grid.Column="2"
+                                HorizontalAlignment="Right"
+                                Orientation="Horizontal">
+                        <Button Content="-"
+                                Style="{StaticResource TitleBarButtonStyle}"
+                                Click="MinimizeButton_Click" />
+                        <Button Content="□"
+                                Style="{StaticResource TitleBarButtonStyle}"
+                                Click="MaximizeButton_Click" />
+                        <Button Content="X"
+                                Style="{StaticResource CloseTitleBarButtonStyle}"
+                                Click="CloseButton_Click" />
+                    </StackPanel>
+                </Grid>
             </Border>
 
             <Border Grid.Row="1"
-                    Margin="20"
-                    Padding="22"
                     Background="{StaticResource ThemeAlternateBaseBrush}"
                     BorderBrush="{StaticResource ThemeBorderBrush}"
-                    BorderThickness="1"
-                    CornerRadius="8">
+                    BorderThickness="0,0,0,1"
+                    Padding="10">
                 <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-
-                    <DockPanel LastChildFill="False">
-                        <StackPanel>
-                            <TextBlock Text="AuthFlow"
-                                       FontSize="28"
-                                       FontWeight="SemiBold"
-                                       Foreground="{StaticResource ThemeWindowTextBrush}" />
-                            <TextBlock Margin="0,4,0,0"
-                                       Foreground="{StaticResource ThemeSublineBrush}"
-                                       Text="Login-Ziel wählen und Automation starten" />
-                        </StackPanel>
-                        <Border DockPanel.Dock="Right"
-                                Padding="4"
-                                Background="{StaticResource ThemeBaseBrush}"
-                                BorderBrush="{StaticResource ThemeBorderBrush}"
-                                BorderThickness="1"
-                                CornerRadius="8">
-                            <StackPanel Orientation="Horizontal">
-                                <Button Content="+"
-                                        Width="44"
-                                        Height="38"
-                                        Margin="0,0,6,0"
-                                        Padding="0"
-                                        FontSize="18"
-                                        FontWeight="SemiBold"
-                                        ToolTip="Neuen Eintrag anlegen"
-                                        Click="AddButton_Click" />
-                                <Button Content="Bearbeiten"
-                                        Width="104"
-                                        Height="38"
-                                        Padding="10,3"
-                                        Style="{StaticResource SecondaryButtonStyle}"
-                                        Click="EditButton_Click" />
-                            </StackPanel>
-                        </Border>
-                    </DockPanel>
-
-                    <TextBlock Grid.Row="1"
-                               Margin="0,24,0,8"
-                               Foreground="{StaticResource ThemeSublineBrush}"
-                               Text="Eintrag auswählen" />
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="260" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
 
                     <ComboBox x:Name="EntriesComboBox"
-                              Grid.Row="2"
-                              Height="46"
+                              Height="38"
                               DisplayMemberPath="DisplayName"
                               SelectionChanged="EntriesComboBox_SelectionChanged" />
 
-                    <StackPanel Grid.Row="3"
-                                Margin="0,22,0,0">
-                        <Button Content="Anmelden"
-                                Height="58"
-                                Padding="12,4"
-                                FontSize="18"
-                                FontWeight="SemiBold"
-                                Click="LoginButton_Click" />
+                    <Button Grid.Column="1"
+                            Content="+"
+                            Width="42"
+                            Height="38"
+                            Margin="8,0,0,0"
+                            Padding="0"
+                            FontSize="18"
+                            ToolTip="Neuen Eintrag anlegen"
+                            Click="AddButton_Click" />
+                    <Button Grid.Column="2"
+                            Content="Bearbeiten"
+                            Width="104"
+                            Height="38"
+                            Margin="6,0,0,0"
+                            Padding="10,3"
+                            Style="{StaticResource SecondaryButtonStyle}"
+                            Click="EditButton_Click" />
 
-                        <TextBlock x:Name="StatusTextBlock"
-                                   Margin="0,14,0,0"
+                    <Border Grid.Column="3"
+                            Height="38"
+                            Margin="12,0"
+                            Padding="12,0"
+                            Background="{StaticResource ThemeBaseBrush}"
+                            BorderBrush="{StaticResource ThemeBorderBrush}"
+                            BorderThickness="1"
+                            CornerRadius="6">
+                        <TextBlock x:Name="AddressTextBlock"
+                                   VerticalAlignment="Center"
                                    Foreground="{StaticResource ThemeSublineBrush}"
-                                   Text="Bereit."
-                                   TextWrapping="Wrap" />
-                    </StackPanel>
+                                   Text="Kein Ziel ausgewählt"
+                                   TextTrimming="CharacterEllipsis" />
+                    </Border>
+
+                    <Button Grid.Column="4"
+                            Content="Neu laden"
+                            Width="96"
+                            Height="38"
+                            Padding="10,3"
+                            Style="{StaticResource SecondaryButtonStyle}"
+                            Click="ReloadButton_Click" />
+                    <Button Grid.Column="5"
+                            Content="Anmelden"
+                            Width="112"
+                            Height="38"
+                            Margin="8,0,0,0"
+                            Padding="10,3"
+                            Click="LoginButton_Click" />
                 </Grid>
+            </Border>
+
+            <Border Grid.Row="2" Background="{StaticResource ThemeBaseBrush}">
+                <wv2:WebView2 x:Name="BrowserView" />
+            </Border>
+
+            <Border Grid.Row="3"
+                    Background="{StaticResource ThemeAlternateBaseBrush}"
+                    BorderBrush="{StaticResource ThemeBorderBrush}"
+                    BorderThickness="0,1,0,0"
+                    Padding="10">
+                <TextBlock x:Name="StatusTextBlock"
+                           Foreground="{StaticResource ThemeSublineBrush}"
+                           Text="Bereit."
+                           TextWrapping="Wrap" />
             </Border>
         </Grid>
     </Border>

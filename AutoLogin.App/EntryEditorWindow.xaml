@@ -23,17 +23,23 @@
                     BorderBrush="{StaticResource ThemeBorderBrush}"
                     BorderThickness="0,0,0,1"
                     MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
-                <DockPanel>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
                     <TextBlock Margin="12,0,0,0"
                                VerticalAlignment="Center"
                                FontSize="14"
                                Foreground="{StaticResource ThemeWindowTextBrush}"
                                Text="{Binding Title, RelativeSource={RelativeSource AncestorType=Window}}" />
-                    <Button DockPanel.Dock="Right"
+                    <Button Grid.Column="2"
+                            HorizontalAlignment="Right"
                             Content="X"
                             Style="{StaticResource CloseTitleBarButtonStyle}"
                             Click="CloseButton_Click" />
-                </DockPanel>
+                </Grid>
             </Border>
 
             <Border Grid.Row="1"
@@ -86,11 +92,11 @@
                                   SelectedValuePath="Id" />
 
                         <TextBlock Grid.Row="5" Text="TOTP Secret:" VerticalAlignment="Center" Foreground="{StaticResource ThemeSublineBrush}" />
-                        <TextBox x:Name="TotpSecretTextBox"
-                                 Grid.Row="5"
-                                 Grid.Column="1"
-                                 Height="42"
-                                 Margin="0,0,0,12" />
+                        <PasswordBox x:Name="TotpSecretBox"
+                                     Grid.Row="5"
+                                     Grid.Column="1"
+                                     Height="42"
+                                     Margin="0,0,0,12" />
 
                         <CheckBox x:Name="AutoSubmitCheckBox"
                                   Grid.Row="6"

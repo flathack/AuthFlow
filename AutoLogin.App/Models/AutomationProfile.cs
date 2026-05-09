@@ -13,4 +13,9 @@ public sealed class AutomationProfile
     public int TimeoutMs { get; set; } = 15000;
 
     public bool WaitForNavigation { get; set; } = true;
+
+    public override string ToString()
+    {
+        return string.IsNullOrWhiteSpace(Name) ? Id : Name;
+    }
 }
