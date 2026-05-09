@@ -1,0 +1,112 @@
+<Window x:Class="AutoLogin.App.EntryEditorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="AuthFlow"
+        Height="590"
+        Width="560"
+        WindowStartupLocation="CenterOwner"
+        WindowStyle="None"
+        ResizeMode="NoResize">
+    <Border Background="{StaticResource ThemeWindowBrush}"
+            BorderBrush="{StaticResource ThemeBorderBrush}"
+            BorderThickness="1">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="44" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Border Background="{StaticResource ThemeWindowBrush}"
+                    BorderBrush="{StaticResource ThemeBorderBrush}"
+                    BorderThickness="0,0,0,1"
+                    MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
+                <DockPanel>
+                    <TextBlock Margin="12,0,0,0"
+                               VerticalAlignment="Center"
+                               FontSize="14"
+                               Foreground="{StaticResource ThemeWindowTextBrush}"
+                               Text="{Binding Title, RelativeSource={RelativeSource AncestorType=Window}}" />
+                    <Button DockPanel.Dock="Right"
+                            Content="X"
+                            Style="{StaticResource CloseTitleBarButtonStyle}"
+                            Click="CloseButton_Click" />
+                </DockPanel>
+            </Border>
+
+            <Border Grid.Row="1"
+                    Margin="20"
+                    Padding="22"
+                    Background="{StaticResource ThemeAlternateBaseBrush}"
+                    BorderBrush="{StaticResource ThemeBorderBrush}"
+                    BorderThickness="1"
+                    CornerRadius="8">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="130" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Name:" VerticalAlignment="Center" Foreground="{StaticResource ThemeSublineBrush}" />
+                        <TextBox x:Name="DisplayNameTextBox" Grid.Column="1" Height="42" Margin="0,0,0,12" />
+
+                        <TextBlock Grid.Row="1" Text="Start-URL:" VerticalAlignment="Center" Foreground="{StaticResource ThemeSublineBrush}" />
+                        <TextBox x:Name="StartUrlTextBox" Grid.Row="1" Grid.Column="1" Height="42" Margin="0,0,0,12" />
+
+                        <TextBlock Grid.Row="2" Text="Benutzer:" VerticalAlignment="Center" Foreground="{StaticResource ThemeSublineBrush}" />
+                        <TextBox x:Name="UsernameTextBox" Grid.Row="2" Grid.Column="1" Height="42" Margin="0,0,0,12" />
+
+                        <TextBlock Grid.Row="3" Text="Passwort:" VerticalAlignment="Center" Foreground="{StaticResource ThemeSublineBrush}" />
+                        <PasswordBox x:Name="PasswordBox" Grid.Row="3" Grid.Column="1" Height="42" Margin="0,0,0,12" />
+
+                        <TextBlock Grid.Row="4" Text="Profil:" VerticalAlignment="Center" Foreground="{StaticResource ThemeSublineBrush}" />
+                        <ComboBox x:Name="ProfileComboBox"
+                                  Grid.Row="4"
+                                  Grid.Column="1"
+                                  Height="42"
+                                  Margin="0,0,0,12"
+                                  DisplayMemberPath="Name"
+                                  SelectedValuePath="Id" />
+
+                        <TextBlock Grid.Row="5" Text="TOTP Secret:" VerticalAlignment="Center" Foreground="{StaticResource ThemeSublineBrush}" />
+                        <TextBox x:Name="TotpSecretTextBox"
+                                 Grid.Row="5"
+                                 Grid.Column="1"
+                                 Height="42"
+                                 Margin="0,0,0,12" />
+
+                        <CheckBox x:Name="AutoSubmitCheckBox"
+                                  Grid.Row="6"
+                                  Grid.Column="1"
+                                  Content="Formular nach dem Ausfüllen automatisch absenden" />
+                    </Grid>
+
+                    <StackPanel Grid.Row="1"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Right"
+                                Margin="0,20,0,0">
+                        <Button Content="Abbrechen" Width="120" Height="42" Margin="0,0,10,0" Style="{StaticResource SecondaryButtonStyle}" Click="CancelButton_Click" />
+                        <Button Content="Speichern" Width="120" Height="42" Click="SaveButton_Click" />
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Grid>
+    </Border>
+</Window>

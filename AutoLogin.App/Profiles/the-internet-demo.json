@@ -1,0 +1,31 @@
+{
+  "id": "the-internet-demo",
+  "name": "The Internet Demo Login",
+  "targetUrlPattern": "the-internet.herokuapp.com/login",
+  "timeoutMs": 15000,
+  "waitForNavigation": true,
+  "steps": [
+    {
+      "action": "wait_for_selector",
+      "selector": "#username"
+    },
+    {
+      "action": "set_value",
+      "selector": "#username",
+      "value": "{{username}}"
+    },
+    {
+      "action": "set_value",
+      "selector": "#password",
+      "value": "{{password}}"
+    },
+    {
+      "action": "click",
+      "selector": "button[type='submit']"
+    },
+    {
+      "action": "assert_url",
+      "urlPattern": "/secure"
+    }
+  ]
+}

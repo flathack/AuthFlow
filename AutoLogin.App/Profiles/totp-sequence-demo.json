@@ -1,0 +1,46 @@
+{
+  "id": "totp-sequence-demo",
+  "name": "TOTP Sequence Demo",
+  "targetUrlPattern": "*",
+  "timeoutMs": 20000,
+  "waitForNavigation": true,
+  "steps": [
+    {
+      "action": "wait_for_selector",
+      "selector": "input[type='email'], input[name='username'], input[name='login'], input[type='text']"
+    },
+    {
+      "action": "set_value",
+      "selector": "input[type='email'], input[name='username'], input[name='login'], input[type='text']",
+      "value": "{{username}}"
+    },
+    {
+      "action": "set_value",
+      "selector": "input[type='password']",
+      "value": "{{password}}"
+    },
+    {
+      "action": "submit_form",
+      "selector": "input[type='password']"
+    },
+    {
+      "action": "wait_for_selector",
+      "selector": "input[name='totp'], input[name='otp'], input[inputmode='numeric'], input[autocomplete='one-time-code']",
+      "timeoutMs": 30000
+    },
+    {
+      "action": "set_totp",
+      "selector": "input[name='totp'], input[name='otp'], input[inputmode='numeric'], input[autocomplete='one-time-code']"
+    },
+    {
+      "action": "click",
+      "selector": "button[data-action='skip'], button[aria-label='Skip'], button.skip, input[value='Skip']",
+      "timeoutMs": 20000
+    },
+    {
+      "action": "click",
+      "selector": "button[aria-label='Personal Computer'], button[data-label='Personal Computer'], input[value='Personal Computer']",
+      "timeoutMs": 20000
+    }
+  ]
+}

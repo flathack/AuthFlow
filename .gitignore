@@ -1,0 +1,6 @@
+bin/
+obj/
+publish/
+temp-verify-build/
+.vs/
+releases/

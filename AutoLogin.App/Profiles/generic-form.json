@@ -1,0 +1,31 @@
+{
+  "id": "generic-form",
+  "name": "Generic Login Form",
+  "targetUrlPattern": "*",
+  "timeoutMs": 15000,
+  "waitForNavigation": true,
+  "steps": [
+    {
+      "action": "wait_for_selector",
+      "selector": "input[type='email'], input[name='email'], input[name='username'], input[name='login'], input[type='text']"
+    },
+    {
+      "action": "set_value",
+      "selector": "input[type='email'], input[name='email'], input[name='username'], input[name='login'], input[type='text']",
+      "value": "{{username}}"
+    },
+    {
+      "action": "wait_for_selector",
+      "selector": "input[type='password']"
+    },
+    {
+      "action": "set_value",
+      "selector": "input[type='password']",
+      "value": "{{password}}"
+    },
+    {
+      "action": "submit_form",
+      "selector": "input[type='password']"
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "id": "toyota-citrix-login",
+  "name": "Toyota Citrix Login",
+  "targetUrlPattern": "remote.de.toyota-fs.com",
+  "timeoutMs": 60000,
+  "waitForNavigation": true,
+  "steps": [
+    {
+      "action": "wait_for_selector",
+      "selector": "input[type='text'], input[name='login'], input[name='username'], input[id*='user']",
+      "timeoutMs": 30000
+    },
+    {
+      "action": "set_value",
+      "selector": "input[type='text'], input[name='login'], input[name='username'], input[id*='user']",
+      "value": "{{username}}"
+    },
+    {
+      "action": "wait_for_selector",
+      "selector": "input[type='password'], input[name='passwd'], input[name='password'], input[id*='pass']",
+      "timeoutMs": 30000
+    },
+    {
+      "action": "set_value",
+      "selector": "input[type='password'], input[name='passwd'], input[name='password'], input[id*='pass']",
+      "value": "{{password}}"
+    },
+    {
+      "action": "submit_form",
+      "selector": "input[type='password'], input[name='passwd'], input[name='password'], input[id*='pass']",
+      "timeoutMs": 30000
+    },
+    {
+      "action": "wait_for_text",
+      "value": "Enter Your Microsoft verification code",
+      "timeoutMs": 30000
+    },
+    {
+      "action": "wait_for_selector",
+      "selector": "#response",
+      "timeoutMs": 30000
+    },
+    {
+      "action": "set_totp",
+      "selector": "#response"
+    },
+    {
+      "action": "wait_for_selector",
+      "selector": "#ns-dialogue-submit",
+      "timeoutMs": 20000
+    },
+    {
+      "action": "click",
+      "selector": "#ns-dialogue-submit",
+      "timeoutMs": 20000
+    },
+    {
+      "action": "wait_for_text",
+      "value": "Ohne Prüfung",
+      "timeoutMs": 30000
+    },
+    {
+      "action": "wait_for_selector",
+      "selector": "#skipbutton",
+      "timeoutMs": 30000
+    },
+    {
+      "action": "click",
+      "selector": "#skipbutton",
+      "timeoutMs": 30000
+    },
+    {
+      "action": "wait_for_selector",
+      "selector": "#protocolhandler-welcome-installButton",
+      "timeoutMs": 60000
+    },
+    {
+      "action": "click",
+      "selector": "#protocolhandler-welcome-installButton",
+      "timeoutMs": 60000
+    },
+    {
+      "action": "delay",
+      "delayMs": 2000
+    },
+    {
+      "action": "click_text",
+      "value": "Citrix Workspace-App ermitteln",
+      "timeoutMs": 15000
+    },
+    {
+      "action": "wait_for_text",
+      "value": "Personal Computer",
+      "timeoutMs": 60000
+    },
+    {
+      "action": "click_text",
+      "value": "Personal Computer",
+      "timeoutMs": 30000
+    },
+    {
+      "action": "wait_for_text",
+      "value": "Öffnen",
+      "timeoutMs": 30000
+    },
+    {
+      "action": "click_text",
+      "value": "Öffnen",
+      "timeoutMs": 30000
+    }
+  ]
+}
