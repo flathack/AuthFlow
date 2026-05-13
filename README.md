@@ -48,6 +48,16 @@ On Windows you can also use:
 Credentials are intended to stay local. Passwords and optional TOTP secrets are protected with Windows DPAPI for the current user account.
 Do not commit real profiles, exported credentials, screenshots, or logs that contain account-specific information.
 
+## Release
+
+Windows release ZIPs can be built with:
+
+```powershell
+.\scripts\release_windows.ps1 -SkipUpload
+```
+
+Remove `-SkipUpload` to create the Git tag and GitHub Release after checking the generated assets.
+
 ## License
 
 MIT License. See [LICENSE](LICENSE).

@@ -4,3 +4,4 @@ publish/
 temp-verify-build/
 .vs/
 releases/
+release/
