@@ -2,6 +2,8 @@
 
 [Deutsch](README.de.md)
 
+<img src="assets/authflow-icon.png" alt="AuthFlow icon" width="160">
+
 AuthFlow is a Windows desktop app for repeatable web and Citrix-style login workflows. It combines a local encrypted vault, editable automation profiles, and an embedded WebView2 browser.
 
 ## Features
@@ -15,11 +17,11 @@ AuthFlow is a Windows desktop app for repeatable web and Citrix-style login work
 
 ## Download
 
-The current version is **v1.0.1**:
+The current version is **v1.0.2**:
 
-- [Windows x64 ZIP](https://github.com/flathack/AuthFlow/releases/download/v1.0.1/AuthFlow-v1.0.1-windows-x64.zip)
-- [Windows ARM64 ZIP](https://github.com/flathack/AuthFlow/releases/download/v1.0.1/AuthFlow-v1.0.1-windows-arm64.zip)
-- [Release notes and SHA-256 checksums](https://github.com/flathack/AuthFlow/releases/tag/v1.0.1)
+- [Windows x64 ZIP](https://github.com/flathack/AuthFlow/releases/download/v1.0.2/AuthFlow-v1.0.2-windows-x64.zip)
+- [Windows ARM64 ZIP](https://github.com/flathack/AuthFlow/releases/download/v1.0.2/AuthFlow-v1.0.2-windows-arm64.zip)
+- [Release notes and SHA-256 checksums](https://github.com/flathack/AuthFlow/releases/tag/v1.0.2)
 
 Extract the complete ZIP before starting `AuthFlow.exe`. Microsoft Edge WebView2 Runtime is required on Windows 10 or Windows 11.
 
