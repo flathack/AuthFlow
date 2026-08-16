@@ -13,17 +13,21 @@ AuthFlow is a Windows desktop app for repeatable web and Citrix-style login work
 - Embedded WebView2 browser
 - Editable automation profiles
 - Automated password and two-factor login sequences
+- Verified automatic updates from stable GitHub releases
+- Per-user Windows installer without administrator rights
 - Self-contained Windows x64 and ARM64 packages
 
 ## Download
 
-The current version is **v1.0.2**:
+The current version is **v1.0.3**. The installer is recommended:
 
-- [Windows x64 ZIP](https://github.com/flathack/AuthFlow/releases/download/v1.0.2/AuthFlow-v1.0.2-windows-x64.zip)
-- [Windows ARM64 ZIP](https://github.com/flathack/AuthFlow/releases/download/v1.0.2/AuthFlow-v1.0.2-windows-arm64.zip)
-- [Release notes and SHA-256 checksums](https://github.com/flathack/AuthFlow/releases/tag/v1.0.2)
+- [Windows x64 installer](https://github.com/flathack/AuthFlow/releases/download/v1.0.3/AuthFlow-v1.0.3-windows-x64-setup.exe)
+- [Windows ARM64 installer](https://github.com/flathack/AuthFlow/releases/download/v1.0.3/AuthFlow-v1.0.3-windows-arm64-setup.exe)
+- [Portable Windows x64 ZIP](https://github.com/flathack/AuthFlow/releases/download/v1.0.3/AuthFlow-v1.0.3-windows-x64.zip)
+- [Portable Windows ARM64 ZIP](https://github.com/flathack/AuthFlow/releases/download/v1.0.3/AuthFlow-v1.0.3-windows-arm64.zip)
+- [Release notes and SHA-256 checksums](https://github.com/flathack/AuthFlow/releases/tag/v1.0.3)
 
-Extract the complete ZIP before starting `AuthFlow.exe`. Microsoft Edge WebView2 Runtime is required on Windows 10 or Windows 11.
+The installer preserves the local encrypted vault and settings during upgrades. AuthFlow checks stable GitHub releases automatically, verifies the downloaded installer, and asks before installing it. Microsoft Edge WebView2 Runtime is required on Windows 10 or Windows 11.
 
 ## Security
 

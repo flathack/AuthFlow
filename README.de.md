@@ -13,17 +13,21 @@ AuthFlow ist eine Windows-Desktop-App für wiederholbare Web- und Citrix-Anmelde
 - Eingebetteter WebView2-Browser
 - Bearbeitbare Automationsprofile
 - Automatisierte Passwort- und Zwei-Faktor-Anmeldungen
+- Geprüfte automatische Updates aus stabilen GitHub-Releases
+- Windows-Installer pro Benutzer ohne Administratorrechte
 - Eigenständige Windows-Pakete für x64 und ARM64
 
 ## Download
 
-Die aktuelle Version ist **v1.0.2**:
+Die aktuelle Version ist **v1.0.3**. Der Installer ist die empfohlene Variante:
 
-- [Windows x64 ZIP](https://github.com/flathack/AuthFlow/releases/download/v1.0.2/AuthFlow-v1.0.2-windows-x64.zip)
-- [Windows ARM64 ZIP](https://github.com/flathack/AuthFlow/releases/download/v1.0.2/AuthFlow-v1.0.2-windows-arm64.zip)
-- [Release Notes und SHA-256-Prüfsummen](https://github.com/flathack/AuthFlow/releases/tag/v1.0.2)
+- [Windows x64 Installer](https://github.com/flathack/AuthFlow/releases/download/v1.0.3/AuthFlow-v1.0.3-windows-x64-setup.exe)
+- [Windows ARM64 Installer](https://github.com/flathack/AuthFlow/releases/download/v1.0.3/AuthFlow-v1.0.3-windows-arm64-setup.exe)
+- [Portables Windows x64 ZIP](https://github.com/flathack/AuthFlow/releases/download/v1.0.3/AuthFlow-v1.0.3-windows-x64.zip)
+- [Portables Windows ARM64 ZIP](https://github.com/flathack/AuthFlow/releases/download/v1.0.3/AuthFlow-v1.0.3-windows-arm64.zip)
+- [Release Notes und SHA-256-Prüfsummen](https://github.com/flathack/AuthFlow/releases/tag/v1.0.3)
 
-Entpacke das vollständige ZIP, bevor du `AuthFlow.exe` startest. Unter Windows 10 oder Windows 11 wird die Microsoft Edge WebView2 Runtime benötigt.
+Der Installer bewahrt den lokalen verschlüsselten Tresor und die Einstellungen bei Updates. AuthFlow prüft stabile GitHub-Releases automatisch, verifiziert den heruntergeladenen Installer und fragt vor der Installation nach. Unter Windows 10 oder Windows 11 wird die Microsoft Edge WebView2 Runtime benötigt.
 
 ## Sicherheit
 
